@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CF/AT 账号</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/codeforces.css">
+    <link rel="stylesheet" type="text/css" href="/css/atcoder.css">
+    <link rel="stylesheet" type="text/css" href="/css/contest.css">
+    <script language=javascript src="./script/main.js"></script>
+    <script language=javascript src="./script/codeforces.js"></script>
+    <script language=javascript src="./script/atcoder.js"></script>
+    <script language=javascript src="./script/contest.js"></script>
+    <script>
+        /* Initialize */
+        var only_cf = parseInt(getQueryVariable('only-cf'));
+        if (only_cf != 1) only_cf = 0;
+        var only_at = parseInt(getQueryVariable('only-at'));
+        if (only_at != 1) only_at = 0;
+        var only_rui_er = parseInt(getQueryVariable('only-rui_er'));
+        if (only_rui_er != 0) only_rui_er = 1;
+        var type = parseInt(getQueryVariable('type'));
+        if (type != 0) type = 1;
+        /* generating table */
+        var url = "accounts.json";
+        var request = new XMLHttpRequest();
+        request.open("get", url);
+        request.send(null);
+        request.onload = function () {
+            if (request.status == 200) {
+                var json = JSON.parse(request.responseText);
+                var html = `
+                    <table class='data' border='1' style='width: 100%;'>
+                        <caption>CF/AT 账号</caption>
+                        <thead>
+                            <tr>
+                                <th style='width: 7%;'>OJ</th>
+                                <th style='width: 10%;'>用户名</th>
+                                <th style='width: 18%;'>组织</th>
+                                <th style='width: 15%;'>rating</th>
+                                <th style='width: 15%;'>最高 rating</th>
+                                <th style='width: 8%;'>contribution</th>
+                                <th style='width: 8%;'>rated 比赛</th>
+                                <th style='width: 8%;'>provisional</th>
+                                <th style='width: 11%;'>最后比赛</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    `;
+                var to = json.length - 1;
+                var from = 0;
+                var shown = 0;
+                console.log("from", from, "to", to);
+                for (var x = from; x <= to; x++) {
+                    if(only_cf == 1 && json[x]['oj'] != 'CodeForces') continue;
+                    if(only_at == 1 && json[x]['oj'] != 'AtCoder') continue;
+                    if(only_sunskydp == 1 && json[x]['username'].search("sunskydp") == -1) continue;
+                    console.log(x, json[x]);
+                    if(json[x]['oj'] == 'CodeForces') {
+                        html += `
+                            <tr>
+                                <td>${json[x]['oj']}</td>
+                                <td><a href="https://www.codeforces.com/profile/${json[x]['username']}">${getCFUser2(getCFLevel(true, json[x]['rating']), json[x]['rating'], json[x]['username'], type)}</a></td>
+                                <td>${json[x]['affiliation']}</td>
+                                <td>${getCFUser(getCFLevel(true, json[x]['rating']), json[x]['rating'], type)}</td>
+                                <td>${getCFUser(getCFLevel(true, json[x]['max-rating']), json[x]['max-rating'], type)}</td>
+                                <td>${getCFDelta(json[x]['contribution'])}</td>
+                                <td>${json[x]['rated-matches']}</td>
+                                <td>${showNA()}</td>
+                                <td>${json[x]['last-competed']}</td>
+                            </tr>
+                        `;
+                    }
+                    else {
+                        html += `
+                            <tr>
+                                <td>${json[x]['oj']}</td>
+                                <td><a href="https://atcoder.jp/users/sunskydp">${getATUser2(getATLevel(true, json[x]['rating']), json[x]['username'])}</a></td>
+                                <td>${json[x]['affiliation']}</td>
+                                <td>${getATUser(getATLevel(true, json[x]['rating']), json[x]['rating'])}</td>
+                                <td>${getATUser(getATLevel(true, json[x]['max-rating']), json[x]['max-rating'])}</td>
+                                <td>${showNA()}</td>
+                                <td>${json[x]['rated-matches']}</td>
+                                <td>${getATProvisional(json[x]['provisional'])}</td>
+                                <td>${json[x]['last-competed']}</td>
+                            </tr>
+                        `;
+                    }
+                    shown += 1;
+                }
+                html += `
+                        </tbody>
+                    </table>
+                    `;
+                document.getElementById("record-table").innerHTML = html;
+                document.getElementById("details").innerHTML = `
+                    <p>总记录数：<strong>${to - from + 1}</strong></p>
+                    <p>已显示记录数：<strong>${shown}</strong></p>
+                    <p>可以使用 ?only-cf(0/1, default: 0)、?only-at(0/1, default: 0)、?only-rui_er(0/1, default: 1) 来限制页面显示范围。</p>
+                    <p>默认使用改进版颜色（1000~1199N、IM、IGM 的显示不同），若希望显示 CF 原来的颜色，请加上 ?type=0。</p>
+                    <a class="btn" href="/">主页</a> | <a class="btn" href="/accounts.html">CF/AT 账号</a> | <a class="btn" href="/contests.html">CF/AT 比赛</a>
+                    `;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <fieldset class="container">
+            <legend>CF/AT 账号</legend>
+            <div id="details">数据生成中……</div>
+            <div id="record-table">表格生成中……</div>
+        </fieldset>
+    </div>
+</body>
+
+</html>
