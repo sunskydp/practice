@@ -1,0 +1,34 @@
+.user {
+    display: inline-block;
+    font-weight: bold;
+}
+.at-unrated {
+    color: #000000 !important;
+}
+.gray, .inactive {
+    color: #808080 !important;
+}
+.brown {
+    color: #804000 !important;
+}
+.green, .active {
+    color: #008000 !important;
+}
+.cyan {
+    color: #00c0c0 !important;
+}
+.blue {
+    color: #0000ff !important;
+}
+.yellow {
+    color: #c0c000 !important;
+}
+.orange {
+    color: #ff8000 !important;
+}
+.red {
+    color: #ff0000 !important;
+}
+.active, .inactive {
+    font-weight: bold;
+}
