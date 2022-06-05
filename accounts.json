@@ -1,0 +1,24 @@
+[
+    {
+        "oj" : "CodeForces", 
+        "username" : "sunskydp", 
+        "rating" : 804, 
+        "max-rating" : 804, 
+        "contribution" : "0", 
+        "affiliation" : "Hangzhou Jiangnan Experimental School of Zhejiang", 
+        "rated-matches" : 3, 
+        "provisional" : null, 
+        "last-competed" : "2022-05-08"
+    },
+    {
+        "oj" : "AtCoder", 
+        "username" : "sunskydp", 
+        "rating" : 0, 
+        "max-rating" : 0, 
+        "contribution" : "0",
+        "affiliation": "Hangzhou Jiangnan Experimental School of Zhejiang",
+        "rated-matches" : 0, 
+        "provisional" : null, 
+        "last-competed" : "2022-02-20"
+    }
+]
