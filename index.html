@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <titleSunSkydp 的 OI 做题记录 from 2022.6.5</title>
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <script language=javascript src="./script/main.js"></script>
+        <script>
+            /* Initialize */
+            var from = parseInt(getQueryVariable("from"));
+            var length = parseInt(getQueryVariable("length"));
+            if(length == -1) length = 20;
+            if(length <= 0 || length >= 21) length = 20;
+
+            /* generating table */
+            var url = "list.json";
+            var request = new XMLHttpRequest();
+            var shown = 0;
+            request.open("get", url);
+            request.send(null);
+            request.onload = function () {
+                if (request.status == 200) {
+                    var json = JSON.parse(request.responseText);
+                    var html = `
+                    <table class='data' border='1' style='width: 100%;'>
+                        <caption>做题记录</caption>
+                        <thead>
+                            <tr>
+                                <th style='width: 8%;'>序号</th>
+                                <th style='width: 14%;'>题号</th>
+                                <th style='width: 18%;'>题目</th>
+                                <th style='width: 8%;'>算法难度</th>
+                                <th style='width: 8%;'>思维难度</th>
+                                <th style='width: 8%;'>代码难度</th>
+                                <th style='width: 18%;'>通过时间</th>
+                                <th style='width: 8%;'>解题报告</th>
+                                <th style='width: 10%;'>标签</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    `;
+                    var mx = json.length, to = from + length - 1;
+                    if(from == -1) {
+                        from = mx - length;
+                        to = mx - 1;
+                    }
+                    if(from > mx - 1) from = mx;
+                    if(to > mx - 1) to = mx - 1;
+                    if(from < 0) from = 0;
+                    console.log('data size:', mx);
+                    console.log('from', from, 'to', to, 'expected length', length);
+                    for(var x = to; x >= from; x--) {
+                        console.log(x, json[x]);
+                        var qwq = "";
+                        for(var y in json[x]['href']) {
+                            qwq += `
+                            <a href="${json[x]['href'][y]['href']}">${json[x]['href'][y]['id']}</a>;
+                            `;
+                        }
+                        var qaq = "", haveTag = 0;
+                        for(var y in json[x]['tags']) {
+                            qaq += `
+                            <a href="javascript:void(0);">${json[x]['tags'][y]['name']}</a>;
+                            `;
+                            haveTag = 1;
+                        }
+                        if(haveTag == 0) qaq = "<p>(EMPTY)</p>";
+                        html += `
+                            <tr>
+                                <td>${x}</td>
+                                <td>${qwq}</td>
+                                <td>${json[x]['name']}</td>
+                                <td>${json[x]['difficulty']['algorithm']}</td>
+                                <td>${json[x]['difficulty']['thinking']}</td>
+                                <td>${json[x]['difficulty']['code']}</td>
+                                <td>${json[x]['time']}</td>
+                        `;
+                        if(json[x]['record'] != null) {
+                            html += `
+                                <td><a href="${json[x]['record']}">Link</a></td>
+                            `;
+                        }
+                        else {
+                            html += `
+                                <td>暂无</td>
+                            `;
+                        }
+                        html += `
+                                <td>${qaq}</td>
+                            </tr>
+                        `;
+                        shown += 1;
+                    }
+                    html += `
+                        </tbody>
+                    </table>
+                    `;
+                    document.getElementById("record-table").innerHTML = html;
+                    document.getElementById("details").innerHTML = `
+                    <p>总记录数：<strong>${mx}</strong>（编号从 <strong>0</strong> 开始）</p>
+                    <p>已显示记录数：<strong>${shown}</strong></p>
+                    <p>第一个记录时间：<strong>${json[0]['time']}</strong></p>
+                    <p>最后一个记录时间：<strong>${json[mx-1]['time']}</strong></p>
+                    <p>注：暂无解题报告的可能原因有题目太水懒得写，或者没有时间写。</p>
+                    <p>注：模拟赛以及 CF/AT 的 Contest 或 Virtual Participation 中现场通过的题目可能不会出现在列表中。</p>
+                    <p>可以使用 ?from(default: 最后) 和 ?length(default: 20) 来限制页面显示范围，最多显示 20 个。</p>
+                    <a class="btn" href="/">主页</a> | <a class="btn" href="/accounts.html">CF/AT 账号</a> | <a class="btn" href="/contests.html">CF/AT 比赛</a>
+                    `;
+                    document.getElementById("now").innerHTML = `
+                    <a class="btn" href="/?from=${from}&length=${length}">当前页</a>
+                    `;
+                    var html2 = ``;
+                    if(from > 0) {
+                        for(var pw=0;;pw++) {
+                            var from2 = from - length * qpow(2, pw);
+                            if(from2 < 0) from2 = 0;
+                            if(from2 > 0) html2 = `<a class="btn" href="/?from=${from2}&length=${length}">前 ${qpow(2, pw)} 页</a> | ` + html2;
+                            else {
+                                html2 = `<a class="btn" href="/?from=${from2}&length=${length}">最前页</a> | ` + html2;
+                                break;
+                            }
+                        }
+                    }
+                    document.getElementById("forward").innerHTML = html2;
+                    var html3 = ``;
+                    if(to < mx - 1) {
+                        for(var pw=0;;pw++) {
+                            var to2 = to + length * qpow(2, pw);
+                            if(to2 > mx - 1) to2 = mx - 1;
+                            var from2 = to2 - length + 1;
+                            if(to2 < mx - 1) html3 = html3 + ` | <a class="btn" href="/?from=${from2}&length=${length}">后 ${qpow(2, pw)} 页</a>`;
+                            else {
+                                html3 = html3 + ` | <a class="btn" href="/?from=${from2}&length=${length}">最后页</a>`;
+                                break;
+                            }
+                        }
+                    }
+                    document.getElementById("backward").innerHTML = html3;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <fieldset class="container">
+                <legend>做题记录</legend>
+                <div id="details">数据生成中……</div>
+                <div id="record-table">表格生成中……</div>
+                <div id="toggle">
+                    <span id="forward"></span>
+                    <span id="now"></span>
+                    <span id="backward"></span>
+                </div>
+            </fieldset>
+        </div>
+    </body>
+</html>
