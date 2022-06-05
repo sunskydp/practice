@@ -31,7 +31,7 @@
         var show_beta = parseInt(getQueryVariable('show-beta'));
         if(show_beta != 1) show_beta = 1;
         var only_sunskydp = parseInt(getQueryVariable('only-sunskydp'));
-        if(only_rui_er != 0) only_rui_er = 1;
+        if(only_sunskydp != 0) only_sunskydp = 1;
         var type = parseInt(getQueryVariable('type'));
         if (type != 0) type = 1;
         /* generating table */
@@ -77,7 +77,7 @@
                     if(only_unrated == 1 && json[x]['virtual'] != false && rated != false) continue;
                     if(only_ak == 1 && json[x]['ak'] != true) continue;
                     if(show_beta == 0 && beta == true) continue;
-                    if(only_rui_er == 1 && json[x]['account'].search("sunskydp") == -1) continue;
+                    if(only_sunskydp == 1 && json[x]['account'].search("sunskydp") == -1) continue;
                     console.log(x, json[x]);
                     if (json[x]['oj'] == 'CodeForces') {
                         var qwq = ``;
