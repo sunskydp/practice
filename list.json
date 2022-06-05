@@ -4,7 +4,7 @@
             {"id" : "lg1001", "href" : "https://www.luogu.com.cn/problem/P1001"}
         ], 
         "name" : "A+B Problem", 
-        "record" : "/record/P1001.html", 
+        "record" : "/practice/record/P1001.html", 
         "time" : "2021-07-12 18:35:02", 
         "difficulty" : {
             "algorithm" : 0.01, 
