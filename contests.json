@@ -1,0 +1,20 @@
+[
+    {
+        "oj" : "CodeForces", 
+        "account" : "sunskydp", 
+        "name" : "Codeforces Round #620", 
+        "id" : "1304", 
+        "time" : "2020-02-15", 
+        "class" : "div2", 
+        "virtual" : false, 
+        "official" : true, 
+        "team" : 0, 
+        "rank" : 4437, 
+        "solved" : 2, 
+        "ak" : false, 
+        "delta" : "-44",
+        "old-rating" : null, 
+        "new-rating" : 1456, 
+        "performance" : 1319
+    }
+]
