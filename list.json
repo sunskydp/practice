@@ -5,7 +5,7 @@
         ], 
         "name" : "A+B Problem", 
         "record" : "/practice/record/P1001.html", 
-        "time" : "2021-07-12 18:35:02", 
+        "time" : "2020-08-22 11:07 ", 
         "difficulty" : {
             "algorithm" : 0.01, 
             "thinking" : 0.01, 
@@ -14,6 +14,70 @@
         "tags" : [
             {"id" : 0, "name" : "模拟"}, 
             {"id" : 1, "name" : "暴力"}
+        ]
+    },
+    {
+        "href" : [
+            {"id" : "lg5022", "href" : "https://www.luogu.com.cn/problem/P5022"}
+        ], 
+        "name" : "[NOIP2018 提高组] 旅行 ", 
+        "record" : "", 
+        "time" : "2022 03-25 21:49:17 ", 
+        "difficulty" : {
+            "algorithm" : 40, 
+            "thinking" : 40, 
+            "code" : 40
+        }, 
+        "tags" : [
+            
+        ]
+    },
+    {
+        "href" : [
+            {"id" : "lg4185", "href" : "https://www.luogu.com.cn/problem/P4185"}
+        ], 
+        "name" : "[USACO18JAN]MooTube G ", 
+        "record" : "", 
+        "time" : "2022 06-02 20:31:15", 
+        "difficulty" : {
+            "algorithm" : 40, 
+            "thinking" : 40, 
+            "code" : 40
+        }, 
+        "tags" : [
+            
+        ]
+    },
+    {
+        "href" : [
+            {"id" : "lg1565", "href" : "https://www.luogu.com.cn/problem/P1565"}
+        ], 
+        "name" : "牛宫 ", 
+        "record" : "", 
+        "time" : "2022 06-04 16:43:04", 
+        "difficulty" : {
+            "algorithm" : 30, 
+            "thinking" : 30, 
+            "code" : 30
+        }, 
+        "tags" : [
+            
+        ]
+    },
+    {
+        "href" : [
+            {"id" : "lg1896", "href" : "https://www.luogu.com.cn/problem/P1896"}
+        ], 
+        "name" : "[SCOI2005] 互不侵犯", 
+        "record" : "", 
+        "time" : "2022 06-11 11:49:28", 
+        "difficulty" : {
+            "algorithm" : 45, 
+            "thinking" : 45, 
+            "code" : 45
+        }, 
+        "tags" : [
+            
         ]
     }
 ]
