@@ -24,9 +24,9 @@
         "record" : null, 
         "time" : "2022 03-25 21:49:17 ", 
         "difficulty" : {
-            "algorithm" : 40, 
-            "thinking" : 40, 
-            "code" : 40
+            "algorithm" : 0.40, 
+            "thinking" : 0.40, 
+            "code" : 0.40
         }, 
         "tags" : null
     },
@@ -38,9 +38,9 @@
         "record" : null, 
         "time" : "2022 06-02 20:31:15", 
         "difficulty" : {
-            "algorithm" : 40, 
-            "thinking" : 40, 
-            "code" : 40
+            "algorithm" : 0.40, 
+            "thinking" : 0.40, 
+            "code" : 0.40
         }, 
         "tags" : null
     },
@@ -52,9 +52,9 @@
         "record" : null, 
         "time" : "2022 06-04 16:43:04", 
         "difficulty" : {
-            "algorithm" : 30, 
-            "thinking" : 30, 
-            "code" : 30
+            "algorithm" : 0.30, 
+            "thinking" : 0.30, 
+            "code" : 0.30
         }, 
         "tags" : null
     },
@@ -63,12 +63,12 @@
             {"id" : "lg1896", "href" : "https://www.luogu.com.cn/problem/P1896"}
         ], 
         "name" : "[SCOI2005] 互不侵犯", 
-        "record" : "", 
+        "record" : null, 
         "time" : "2022 06-11 11:49:28", 
         "difficulty" : {
-            "algorithm" : 45, 
-            "thinking" : 45, 
-            "code" : 45
+            "algorithm" : 0.45, 
+            "thinking" : 0.45, 
+            "code" : 0.45
         }, 
         "tags" : null
     }
