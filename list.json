@@ -4,7 +4,7 @@
             {"id" : "lg1001", "href" : "https://www.luogu.com.cn/problem/P1001"}
         ], 
         "name" : "A+B Problem", 
-        "record" : "/practice/record/P1001.html", 
+        "record" : null, 
         "time" : "2020-08-22 11:07 ", 
         "difficulty" : {
             "algorithm" : 0.01, 
@@ -21,48 +21,42 @@
             {"id" : "lg5022", "href" : "https://www.luogu.com.cn/problem/P5022"}
         ], 
         "name" : "[NOIP2018 提高组] 旅行 ", 
-        "record" : "", 
+        "record" : null, 
         "time" : "2022 03-25 21:49:17 ", 
         "difficulty" : {
             "algorithm" : 40, 
             "thinking" : 40, 
             "code" : 40
         }, 
-        "tags" : [
-            
-        ]
+        "tags" : null
     },
     {
         "href" : [
             {"id" : "lg4185", "href" : "https://www.luogu.com.cn/problem/P4185"}
         ], 
         "name" : "[USACO18JAN]MooTube G ", 
-        "record" : "", 
+        "record" : null, 
         "time" : "2022 06-02 20:31:15", 
         "difficulty" : {
             "algorithm" : 40, 
             "thinking" : 40, 
             "code" : 40
         }, 
-        "tags" : [
-            
-        ]
+        "tags" : null
     },
     {
         "href" : [
             {"id" : "lg1565", "href" : "https://www.luogu.com.cn/problem/P1565"}
         ], 
         "name" : "牛宫 ", 
-        "record" : "", 
+        "record" : null, 
         "time" : "2022 06-04 16:43:04", 
         "difficulty" : {
             "algorithm" : 30, 
             "thinking" : 30, 
             "code" : 30
         }, 
-        "tags" : [
-            
-        ]
+        "tags" : null
     },
     {
         "href" : [
@@ -76,8 +70,6 @@
             "thinking" : 45, 
             "code" : 45
         }, 
-        "tags" : [
-            
-        ]
+        "tags" : null
     }
 ]
